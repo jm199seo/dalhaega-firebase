@@ -25,5 +25,6 @@ yarn-error.log*
 
 # firebase
 firestore-debug.log
+hosting.*.cache
 
 ui-debug.log
