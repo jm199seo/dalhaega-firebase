@@ -1,25 +1,34 @@
+import { Box } from '@mui/material';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Main from './components/Main';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box
+      sx={{
+        // backgroundColor: 'rgb(10, 25, 41)',
+        backgroundColor: 'background.default',
+        display: 'grid',
+        gridTemplateColumns: 'minmax(min-content, 200px) 1fr 1fr 1fr',
+        gap: 1,
+        gridTemplateRows: '100px auto 100px',
+        gridTemplateAreas: `"header header header header"
+        "sidebar main main main"
+        "footer footer footer footer"`,
+      }}
+      minHeight='100vh'
+      minWidth='100vw'
+    >
+      <Box gridArea='header'>Header</Box>
+      <Box gridArea='sidebar' sx={{ backgroundColor: 'info.main' }}>
+        Sidebar
+      </Box>
+      <Box gridArea='main'>
+        <Main />
+      </Box>
+      {/* <Button variant='contained'>haha</Button> */}
+      <Box gridArea='footer'>Footer</Box>
+    </Box>
   );
 }
 
