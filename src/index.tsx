@@ -5,8 +5,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import { store } from 'app/store';
+import 'config/initFirebase';
+import { firebaseConfig } from 'config/initFirebase';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { FirebaseAppProvider } from 'reactfire';
 import App from './App';
 import './config/initFirebase';
 import reportWebVitals from './reportWebVitals';
@@ -16,7 +21,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <App />
+      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </FirebaseAppProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
